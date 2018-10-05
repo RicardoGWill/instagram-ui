@@ -1,37 +1,78 @@
 import React, { Component } from "react";
-import {
+import { 
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from "react-native";
 
-import { Icon } from 'native-base'
+import HomeTab from './AppTabNavigator/HomeTab'
+import SearchTab from './AppTabNavigator/SearchTab'
+import AddMediaTab from './AppTabNavigator/AddMediaTab'
+import LikesTab from './AppTabNavigator/LikesTab'
+import ProfileTab from './AppTabNavigator/ProfileTab'
+
+import {TabNavigator} from 'react-navigation'
+import {Icon} from 'native-base'
 
 class MainScreen extends Component {
 
-  static navigationOptions = {
+    static navigationOptions = {
 
-    headerLeft: <Icon name="ios-camera-outline" />,
-    title: "Instagram",
-    headerRight: <Icon name="ios-send-outline" />
-  }
+        headerLeft: <Icon name= "ios-camera-outline" style= {{paddingLeft: 10}} />,
+        title: "Instagram",
+        headerRight: <Icon style= {{paddingRight: 10}} name= "ios-send-outline" />
+    }
 
     render() {
         return (
-            <View style= {styles.container}>
-              <Text>MainScreen</Text>
-            </View>
+            <AppTabNavigator />
         );
     }
 }
 export default MainScreen;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});
+const AppTabNavigator = TabNavigator({
 
-// At 3:26 in https://www.youtube.com/watch?v=cgg1HidN4mQ&index=1&list=PLy9JCsy2u97lNUL3e3R-uoMQv5GDvf22T
+    HomeTab: {
+        screen: HomeTab
+    },
+    SearchTab: {
+        screen: SearchTab
+    },
+    AddMediaTab: {
+        screen: AddMediaTab
+    },
+    LikesTab: {
+        screen: LikesTab
+    },
+    ProfileTab: {
+        screen: ProfileTab
+    }
+
+}, {
+    animationEnabled: true,
+    swipeEnabled: true,
+    tabBarPosition: "bottom",
+    tabBarOptions: {
+        style: {
+            ...Platform.select({
+                android: {
+                    backgroundColor: 'white'
+                }
+            })
+        },
+        activeTintColor: '#000',
+        inactiveTintColor: '#d1cece',
+        showLabel: false,
+        showIcon: true
+    }
+})
+
+const styles = StyleSheet.create({
+container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+}
+});
