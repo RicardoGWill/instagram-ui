@@ -1,0 +1,2 @@
+# instagram-ui
+This app replicates much of the User Interface of Instagram, and was created in React Native using Javascript as the language and Expo to build it.  It has five tabs, including a "HomeTab" where my (hard-coded) posts are (which include pictures).  It also has a "ProfileTab" that has my photo and information about me.  The other three tabs do not have layouts.  This exercise was to build an interface, not create logins and use the internet and such.  See my "LoginDemoApp" for that.
